@@ -11,7 +11,7 @@ word_parameters = [PrimitiveParameter("concept"),
                    
 WordFactory = Factory(Word, word_parameters)
 
-class LanaguageWords:
+class Egg:
     def __init__(self, language, words):
         self.language = language
         self.words = words
@@ -20,5 +20,5 @@ parameters = [PrimitiveParameter("language"), ComplexParameter("words", WordFact
 
 def LoadEgg(eggFilename):
     """ Loads the given egg and returns the words """
-    languageWords = DataSourceFactory(LanaguageWords, parameters, JsonSource(eggFilename)).loadAll()[0]
-    return languageWords.language, languageWords.words
+    egg = DataSourceFactory(Egg, parameters, JsonSource(eggFilename)).loadAll()[0]
+    return egg
