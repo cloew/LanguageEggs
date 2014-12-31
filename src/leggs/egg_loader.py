@@ -18,7 +18,6 @@ class Egg:
         
 parameters = [PrimitiveParameter("language"), ComplexParameter("words", WordFactory.loadAll)]
 
-def LoadEgg(eggFilename):
-    """ Loads the given egg and returns the words """
-    egg = DataSourceFactory(Egg, parameters, JsonSource(eggFilename)).loadAll()[0]
-    return egg
+def LoadEggs(eggFilename):
+    """ Loads the eggs from the file and returns them """
+    return DataSourceFactory(Egg, parameters, JsonSource(eggFilename)).loadAll()
