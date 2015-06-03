@@ -5,6 +5,6 @@ from kao_factory.factory import Factory
 from kao_factory.Parameter.complex_parameter import ComplexParameter
 from kao_factory.Parameter.primitive_parameter import PrimitiveParameter
 
-DimensionFactory = Factory(InflectionDimension, [PrimitiveParameter("name")])
+DimensionFactory = Factory(InflectionDimension, [PrimitiveParameter("name"), PrimitiveParameter("values")])
 InflectionRuleFactory = Factory(InflectionRule, [PrimitiveParameter("name"),
                                                  ComplexParameter("dimensions", DimensionFactory.loadAll, optional=True, default=[])])

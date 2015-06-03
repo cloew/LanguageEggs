@@ -7,4 +7,5 @@ setup(name='leggs',
       author_email='cloew123@gmail.com',
       #url='http://www.python.org/sigs/distutils-sig/',
       packages=['leggs', 'leggs.inflection'],
+      install_requires=["kao_factory"]
      )
