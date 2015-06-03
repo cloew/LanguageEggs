@@ -1,5 +1,7 @@
-from symbol import Symbol
-from word import Word
+from .symbol import Symbol
+from .word import Word
+
+from .inflection import InflectionRuleFactory
 
 from kao_factory.data_source_factory import DataSourceFactory
 from kao_factory.factory import Factory
@@ -14,13 +16,15 @@ SymbolFactory = Factory(Symbol, word_parameters)
 WordFactory = Factory(Word, word_parameters)
 
 class Egg:
-    def __init__(self, language, symbols, words):
+    def __init__(self, language, symbols, words, inflectionRules):
         self.language = language
         self.symbols = symbols
         self.words = words
+        self.inflectionRules = inflectionRules
         
 parameters = [PrimitiveParameter("language"), ComplexParameter("symbols", SymbolFactory.loadAll, optional=True, default=[]),
-                                              ComplexParameter("words", WordFactory.loadAll, optional=True, default=[])]
+                                              ComplexParameter("words", WordFactory.loadAll, optional=True, default=[]),
+                                              ComplexParameter("inflectionRules", InflectionRuleFactory.loadAll, optional=True, default=[])]
 
 def LoadEggs(eggFilename):
     """ Loads the eggs from the file and returns them """
