@@ -1,2 +1,1 @@
-from .inflection_rule import InflectionRule
 from .inflection_factory import InflectionRuleFactory
