@@ -1,5 +1,5 @@
-from symbol import Symbol
-from word import Word
+from .symbol import Symbol
+from .word import Word
 
 from kao_factory.data_source_factory import DataSourceFactory
 from kao_factory.factory import Factory
@@ -22,6 +22,6 @@ class Egg:
 parameters = [PrimitiveParameter("language"), ComplexParameter("symbols", SymbolFactory.loadAll, optional=True, default=[]),
                                               ComplexParameter("words", WordFactory.loadAll, optional=True, default=[])]
 
-def LoadEggs(eggFilename):
+def LoadEggs(eggFilename, encoding="utf8"):
     """ Loads the eggs from the file and returns them """
-    return DataSourceFactory(Egg, parameters, JsonSource(eggFilename)).loadAll()
+    return DataSourceFactory(Egg, parameters, JsonSource(eggFilename, encoding=encoding)).loadAll()
